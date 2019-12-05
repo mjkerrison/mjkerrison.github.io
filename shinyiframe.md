@@ -1,2 +1,2 @@
 
-<iframe src = "https://mjkerrison.shinyapps.io/mysuperpareto/"></iframe>
+<iframe style = "width: 100%; height: 100%;" src = "https://mjkerrison.shinyapps.io/mysuperpareto/"></iframe>
