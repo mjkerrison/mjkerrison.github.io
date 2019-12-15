@@ -10,12 +10,14 @@ Expect primarily
 
 ### Aforementioned projects
 
-My preferred language is R, and I lean heavily on the 'tidyverse' and 'plotly' libraries. 
+My preferred language is R, and I lean heavily on the 'tidyverse' and 'plotly' libraries. My geographical library of choice is 'leaflet'.
 
 <!-- [Testing Shiny connectivity](shinyiframe.md) -->
+
+* [Developing Australian geographical maps for R](projects/OzMap.md)
 
 ---
 
 ### Aforementioned commentary
 
-[Test page](testpage.md)
+<!-- [Test page](testpage.md) -->
