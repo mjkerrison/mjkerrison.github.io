@@ -8,7 +8,7 @@ A lot of my job is visualising data, and sooner or later that means 'geographica
 
 So: how do we manage this?
 
-This will be a guide to my journey through this challenge, and you can get the results - an R package you can install directly using the `devtools` package - over at [the OzMap repository](github.com/mjkerrison/OzMap).
+This will be a guide to my journey through this challenge, and you can get the results - an R package you can install directly using the `devtools` package - over at [the OzMap repository](https://github.com/mjkerrison/OzMap).
 
 This post will end up being a lot more structured than my actual journey was - there were prototypes which hung around for quite a while, then improvements, then refactors and trips back to square one. It's useful to see what other options are out there, though, and the variety of limitations and where I ran into them help to motivate the project.
 
