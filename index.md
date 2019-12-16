@@ -15,6 +15,7 @@ My preferred language is R, and I lean heavily on the 'tidyverse' and 'plotly' l
 <!-- [Testing Shiny connectivity](shinyiframe.md) -->
 
 * [Developing Australian geographical maps for R](projects/OzMap.md)
+   * ["OzMap" package - GitHub repository](https://github.com/mjkerrison/OzMap)
 
 ---
 
