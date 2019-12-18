@@ -19,6 +19,8 @@ My preferred language is R, and I lean heavily on the 'tidyverse' and 'plotly' l
 
 * Working with `plotly`
    * [Some Ins And Outs](projects/Plotly.md)
+
+
 ---
 
 ### Aforementioned commentary
