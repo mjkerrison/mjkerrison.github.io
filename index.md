@@ -17,6 +17,8 @@ My preferred language is R, and I lean heavily on the 'tidyverse' and 'plotly' l
 * [Developing Australian geographical maps for R](projects/OzMap.md)
    * ["OzMap" package - GitHub repository](https://github.com/mjkerrison/OzMap)
 
+* Working with `plotly`
+   * [Some Ins And Outs](projects/Plotly.md)
 ---
 
 ### Aforementioned commentary
