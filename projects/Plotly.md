@@ -67,7 +67,7 @@ output$mainPlot <- renderPlotly({
   })
 ```
 
-The issue was that when the `plotlyOutput` returned a click event, it would _not_ return the council I thought I had clicked on - I was originally anticipating that the polygons - ordered by `ID` in the data frame - would be rendered in the same order, so that when the click event returned `42` I could look up the polygon with `ID == 42`. No such luck: I'd be clicking on a council in New South Wales and wind up with the name/outline/data for a council in South Australia.
+The issue was that when the `plotlyOutput` returned a click event, it would _not_ return the council I thought I had clicked on - I was originally anticipating that the polygons - ordered by `ID` in the data frame - would be rendered in the same order, so that when the click event returned `42` I could look up ~~the polygon with `ID == 42`~~ the 42nd polygon. No such luck: I'd be clicking on a council in New South Wales and wind up with the name/outline/data for a council in South Australia.
 
 ### The Solution
 
