@@ -125,7 +125,7 @@
 
             async loadProjects() {
                 try {
-                    const response = await fetch('projects.json');
+                    const response = await fetch('./projects.json');
                     const projects = await response.json();
                     this.renderProjects(projects);
                     this.renderBullets(projects);
