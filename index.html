@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proof Consulting ∴ | Management Consulting and AI Safety</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -59,99 +60,20 @@
         <section id="projects" class="section section-alt">
             <div class="container">
                 <h2>Selected Projects</h2>
-                <div class="projects-carousel">
-                    <div class="carousel-container">
-                        <div class="projects-track" id="projectsTrack">
-                            <!-- Google Docs Project Template -->
-                            <div class="project-card gdocs-card">
-                                <div class="project-header">
-                                    <h3>Strategic Framework Development</h3>
-                                    <p class="project-client">AI Safety Research Organisation</p>
-                                </div>
-                                <p class="project-description">Comprehensive strategic planning engagement developing theory of change, impact measurement framework, and operational roadmap for scaling research impact.</p>
-                                <div class="project-link-container">
-                                    <a href="#" class="project-link gdocs-link">
-                                        <div class="gdocs-preview">
-                                            <div class="gdocs-icon">📄</div>
-                                            <div class="link-text">
-                                                <strong>View Strategic Framework</strong>
-                                                <span>Google Docs</span>
-                                            </div>
-                                            <div class="external-icon">↗</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="project-tags">
-                                    <span class="tag">Strategic Planning</span>
-                                    <span class="tag">Theory of Change</span>
-                                </div>
-                            </div>
-
-                            <!-- GitHub Project Template -->
-                            <div class="project-card github-card">
-                                <div class="project-header">
-                                    <h3>AI Safety Governance Toolkit</h3>
-                                    <p class="project-client">Open Source Initiative</p>
-                                </div>
-                                <p class="project-description">Developed open-source governance templates and frameworks for AI safety organisations, including risk assessment tools and compliance checklists.</p>
-                                <div class="project-link-container">
-                                    <a href="#" class="project-link github-link">
-                                        <div class="github-preview">
-                                            <div class="github-icon">⚡</div>
-                                            <div class="link-text">
-                                                <strong>proof-consulting/governance-toolkit</strong>
-                                                <span>GitHub Repository</span>
-                                            </div>
-                                            <div class="external-icon">↗</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="project-tags">
-                                    <span class="tag">Open Source</span>
-                                    <span class="tag">Governance</span>
-                                </div>
-                            </div>
-
-                            <!-- Standard/Confidential Project Template -->
-                            <div class="project-card standard-card">
-                                <div class="project-header">
-                                    <h3>Operational Optimisation Review</h3>
-                                    <p class="project-client">AI Safety Nonprofit</p>
-                                </div>
-                                <p class="project-description">Comprehensive operational review and restructure of research workflows, resulting in 40% improvement in research output efficiency and enhanced cross-team collaboration.</p>
-                                <div class="project-outcome">
-                                    <div class="outcome-metric">
-                                        <span class="metric-value">40%</span>
-                                        <span class="metric-label">Efficiency Gain</span>
-                                    </div>
-                                </div>
-                                <div class="project-tags">
-                                    <span class="tag">Operations</span>
-                                    <span class="tag">Process Optimisation</span>
-                                </div>
-                            </div>
-
-                            <!-- Case Study Project Template -->
-                            <div class="project-card standard-card">
-                                <div class="project-header">
-                                    <h3>Multi-stakeholder AI Safety Strategy</h3>
-                                    <p class="project-client">Government Agency</p>
-                                </div>
-                                <p class="project-description">Led cross-functional workshops and stakeholder engagement to develop national AI safety policy recommendations, balancing innovation objectives with safety considerations.</p>
-                                <div class="project-confidential">
-                                    <span class="confidential-note">Detailed outcomes available under confidentiality agreement</span>
-                                </div>
-                                <div class="project-tags">
-                                    <span class="tag">Policy Development</span>
-                                    <span class="tag">Stakeholder Engagement</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="glide projects-glide">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides" id="projectSlides">
+                            <!-- Projects will be dynamically loaded here -->
+                        </ul>
                     </div>
-                    <div class="carousel-nav">
-                        <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous project">‹</button>
-                        <div class="carousel-indicators" id="carouselIndicators"></div>
-                        <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next project">›</button>
+                    
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous project">‹</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Next project">›</button>
+                    </div>
+                    
+                    <div class="glide__bullets" data-glide-el="controls[nav]" id="projectBullets">
+                        <!-- Bullets will be dynamically generated -->
                     </div>
                 </div>
             </div>
@@ -186,88 +108,136 @@
         </div>
     </footer>
     
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.6.0/dist/glide.min.js"></script>
     <script>
-        // Projects Carousel Functionality
-        class ProjectsCarousel {
+        // Dynamic Project Loader
+        class ProjectLoader {
             constructor() {
-                this.track = document.getElementById('projectsTrack');
-                this.prevBtn = document.getElementById('prevBtn');
-                this.nextBtn = document.getElementById('nextBtn');
-                this.indicators = document.getElementById('carouselIndicators');
-                this.cards = this.track.querySelectorAll('.project-card');
-                this.currentIndex = 0;
-                this.cardWidth = 370; // card width + gap
-                
-                this.init();
+                this.projectsContainer = document.getElementById('projectSlides');
+                this.bulletsContainer = document.getElementById('projectBullets');
+                this.glideInstance = null;
             }
-            
-            init() {
-                this.createIndicators();
-                this.updateView();
-                this.bindEvents();
-            }
-            
-            createIndicators() {
-                this.cards.forEach((_, index) => {
-                    const indicator = document.createElement('div');
-                    indicator.classList.add('indicator');
-                    if (index === 0) indicator.classList.add('active');
-                    indicator.addEventListener('click', () => this.goToSlide(index));
-                    this.indicators.appendChild(indicator);
-                });
-            }
-            
-            bindEvents() {
-                this.prevBtn.addEventListener('click', () => this.prevSlide());
-                this.nextBtn.addEventListener('click', () => this.nextSlide());
-                
-                // Auto-advance every 8 seconds
-                setInterval(() => {
-                    this.nextSlide();
-                }, 8000);
-            }
-            
-            updateView() {
-                const offset = -this.currentIndex * this.cardWidth;
-                this.track.style.transform = `translateX(${offset}px)`;
-                
-                // Update indicators
-                this.indicators.querySelectorAll('.indicator').forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === this.currentIndex);
-                });
-                
-                // Update button states
-                this.prevBtn.disabled = this.currentIndex === 0;
-                this.nextBtn.disabled = this.currentIndex >= this.cards.length - 1;
-            }
-            
-            goToSlide(index) {
-                this.currentIndex = Math.max(0, Math.min(index, this.cards.length - 1));
-                this.updateView();
-            }
-            
-            nextSlide() {
-                if (this.currentIndex < this.cards.length - 1) {
-                    this.currentIndex++;
-                } else {
-                    this.currentIndex = 0; // Loop back to start
+
+            async loadProjects() {
+                try {
+                    const response = await fetch('projects.json');
+                    const projects = await response.json();
+                    this.renderProjects(projects);
+                    this.renderBullets(projects);
+                    this.initializeGlide();
+                } catch (error) {
+                    console.error('Failed to load projects:', error);
                 }
-                this.updateView();
             }
-            
-            prevSlide() {
-                if (this.currentIndex > 0) {
-                    this.currentIndex--;
-                } else {
-                    this.currentIndex = this.cards.length - 1; // Loop to end
+
+            renderProjects(projects) {
+                const projectsHTML = projects.map(project => this.createProjectCard(project)).join('');
+                this.projectsContainer.innerHTML = projectsHTML;
+            }
+
+            createProjectCard(project) {
+                const cardClass = `project-card ${project.type}-card`;
+                
+                return `
+                    <li class="glide__slide">
+                        <div class="${cardClass}">
+                            <div class="project-header">
+                                <h3>${project.title}</h3>
+                                <p class="project-client">${project.client}</p>
+                            </div>
+                            <p class="project-description">${project.description}</p>
+                            ${this.createProjectContent(project)}
+                            <div class="project-tags">
+                                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </li>
+                `;
+            }
+
+            createProjectContent(project) {
+                switch (project.type) {
+                    case 'gdocs':
+                        return `
+                            <div class="project-link-container">
+                                <a href="${project.link.url}" class="project-link gdocs-link">
+                                    <div class="gdocs-preview">
+                                        <div class="gdocs-icon">📄</div>
+                                        <div class="link-text">
+                                            <strong>${project.link.text}</strong>
+                                            <span>${project.link.subtitle}</span>
+                                        </div>
+                                        <div class="external-icon">↗</div>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    case 'github':
+                        return `
+                            <div class="project-link-container">
+                                <a href="${project.link.url}" class="project-link github-link">
+                                    <div class="github-preview">
+                                        <div class="github-icon">⚡</div>
+                                        <div class="link-text">
+                                            <strong>${project.link.text}</strong>
+                                            <span>${project.link.subtitle}</span>
+                                        </div>
+                                        <div class="external-icon">↗</div>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    case 'metrics':
+                        return `
+                            <div class="project-outcome">
+                                <div class="outcome-metric">
+                                    <span class="metric-value">${project.metrics.value}</span>
+                                    <span class="metric-label">${project.metrics.label}</span>
+                                </div>
+                            </div>
+                        `;
+                    case 'confidential':
+                        return `
+                            <div class="project-confidential">
+                                <span class="confidential-note">${project.confidentialNote}</span>
+                            </div>
+                        `;
+                    default:
+                        return '';
                 }
-                this.updateView();
+            }
+
+            renderBullets(projects) {
+                const bulletsHTML = projects.map((_, index) => 
+                    `<button class="glide__bullet" data-glide-dir="=${index}"></button>`
+                ).join('');
+                this.bulletsContainer.innerHTML = bulletsHTML;
+            }
+
+            initializeGlide() {
+                this.glideInstance = new Glide('.projects-glide', {
+                    type: 'carousel',
+                    startAt: 0,
+                    perView: 1,
+                    autoplay: 6000,
+                    hoverpause: true,
+                    animationDuration: 500,
+                    animationTimingFunc: 'ease-in-out',
+                    gap: 20,
+                    breakpoints: {
+                        768: {
+                            gap: 10
+                        }
+                    }
+                });
+                this.glideInstance.mount();
             }
         }
-        
-        // Initialize carousel when DOM is loaded
+
+        // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
-            new ProjectsCarousel();
+            const projectLoader = new ProjectLoader();
+            projectLoader.loadProjects();
         });
     </script>
 </body>

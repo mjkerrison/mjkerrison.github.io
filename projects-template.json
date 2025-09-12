@@ -1,0 +1,49 @@
+[
+  {
+    "id": "strategic-framework",
+    "title": "Strategic Framework Development",
+    "client": "AI Safety Research Organisation",
+    "description": "Comprehensive strategic planning engagement developing theory of change, impact measurement framework, and operational roadmap for scaling research impact.",
+    "type": "gdocs",
+    "link": {
+      "url": "#",
+      "text": "View Strategic Framework",
+      "subtitle": "Google Docs"
+    },
+    "tags": ["Strategic Planning", "Theory of Change"]
+  },
+  {
+    "id": "governance-toolkit",
+    "title": "AI Safety Governance Toolkit",
+    "client": "Open Source Initiative",
+    "description": "Developed open-source governance templates and frameworks for AI safety organisations, including risk assessment tools and compliance checklists.",
+    "type": "github",
+    "link": {
+      "url": "#",
+      "text": "proof-consulting/governance-toolkit",
+      "subtitle": "GitHub Repository"
+    },
+    "tags": ["Open Source", "Governance"]
+  },
+  {
+    "id": "operational-review",
+    "title": "Operational Optimisation Review",
+    "client": "AI Safety Nonprofit",
+    "description": "Comprehensive operational review and restructure of research workflows, resulting in 40% improvement in research output efficiency and enhanced cross-team collaboration.",
+    "type": "metrics",
+    "metrics": {
+      "value": "40%",
+      "label": "Efficiency Gain"
+    },
+    "tags": ["Operations", "Process Optimisation"]
+  },
+  {
+    "id": "policy-strategy",
+    "title": "Multi-stakeholder AI Safety Strategy",
+    "client": "Government Agency",
+    "description": "Led cross-functional workshops and stakeholder engagement to develop national AI safety policy recommendations, balancing innovation objectives with safety considerations.",
+    "type": "confidential",
+    "confidentialNote": "Detailed outcomes available under confidentiality agreement",
+    "tags": ["Policy Development", "Stakeholder Engagement"]
+  }
+]
