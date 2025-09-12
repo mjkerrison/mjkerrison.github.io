@@ -20,6 +20,11 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </nav>
     </header>
 
@@ -234,10 +239,47 @@
             }
         }
 
+        // Mobile Menu Functionality
+        class MobileMenu {
+            constructor() {
+                this.toggle = document.getElementById('mobileMenuToggle');
+                this.navLinks = document.querySelector('.nav-links');
+                this.init();
+            }
+
+            init() {
+                this.toggle.addEventListener('click', () => this.toggleMenu());
+                
+                // Close menu when clicking on nav links
+                this.navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => this.closeMenu());
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('nav')) {
+                        this.closeMenu();
+                    }
+                });
+            }
+
+            toggleMenu() {
+                this.toggle.classList.toggle('active');
+                this.navLinks.classList.toggle('active');
+            }
+
+            closeMenu() {
+                this.toggle.classList.remove('active');
+                this.navLinks.classList.remove('active');
+            }
+        }
+
         // Initialize when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             const projectLoader = new ProjectLoader();
             projectLoader.loadProjects();
+            
+            const mobileMenu = new MobileMenu();
         });
     </script>
 </body>
